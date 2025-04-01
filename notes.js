@@ -7,7 +7,7 @@ const getNotesByTitle = function (title)
     const note = notes.find(note => note.title === title);
     if (note)
     {
-        console.log(chalk.greenBright(note.title, " : ", note.body));
+        console.log(chalk.cyanBright(note.title, " : ", note.body));
     }
     else
     {

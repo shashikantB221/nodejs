@@ -1,9 +1,18 @@
 const fs = require("fs")
 const chalk = require("chalk")
 
-const getNotes = function ()
+const getNotesByTitle = function (title)
 {
-    return "Your notes..."
+    const notes = loadNotes();
+    const note = notes.find(note => note.title === title);
+    if (note)
+    {
+        console.log(chalk.greenBright(note.title, " : ", note.body));
+    }
+    else
+    {
+        console.log(chalk.red("Note not found!"));
+    }
 }
 
 const addNote = function (title, body)
@@ -78,7 +87,7 @@ const getNotesList = function ()
     const notes = loadNotes();
     if (notes.length > 0)
     {
-        console.table(notes.map(note => ({ Title: note.title, Body: note.body }))); 
+        console.table(notes.map(note => ({ Title: note.title, Body: note.body })));
     }
     else
     {
@@ -89,7 +98,7 @@ const getNotesList = function ()
 
 module.exports = {
     addNote: addNote,
-    getNotes: getNotes,
+    getNotesByTitle: getNotesByTitle,
     removeNote: removeNote,
     getNotesList: getNotesList
 }

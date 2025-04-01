@@ -41,6 +41,7 @@ yargs.command({
     }
 })
 
+//List all
 yargs.command({
     command: "list",
     describe: "list all notes",    
